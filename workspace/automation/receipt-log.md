@@ -1,9 +1,9 @@
-// AI-assisted, directed by lochoka
+Label: AI-assisted, directed by lochoka
 Tool: Gemini
 Spec initialled on: 2026-11-19
 First prompt sent on: 2026-11-19
 
-## Prompt
+## First prompt
 function checkStock() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const dashboard = ss.getSheetBYNAME("DASHBOARD");
@@ -20,4 +20,4 @@ function checkStock() {
     reminders.getRange(2,1, lowStockItems.length,3).
     setValues(lowStockItems);
   }
-}
+}# fix this
