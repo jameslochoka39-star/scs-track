@@ -1,9 +1,11 @@
+# AI receipt log -- SCS3.5
+
 Label: AI-assisted, directed by lochoka
 Tool: Gemini
-Spec initialled on: 2026-11-19
-First prompt sent on: 2026-11-19
+Spec initialled on (YYYY-MM-DD): 2026-11-19
+First prompt sent on (YYYY-MM-DD HH:MM): 2026-11-19 12:15
 
-## First prompt
+## The one prompt, word for word
 function checkStock() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const dashboard = ss.getSheetBYNAME("DASHBOARD");
@@ -21,3 +23,12 @@ function checkStock() {
     setValues(lowStockItems);
   }
 }# fix this
+
+## What came back, and what I changed by hand
+The tool fixed getSheetBYNAME to getSheetByName, added the missing semicolon, wrapped the headers in a 2D array for setValues, and removed the invalid Python comment. I added the FS5a label comment on line 1 by hand.
+
+## Iteration -- only if the draft missed a line of the spec (which line)
+None — all spec requirements were covered after patching the syntax and 2D array issues.
+
+## The debug move -- one real error: the message pasted whole, what my trace said first, what the tool said
+Error: TypeError: ss.getSheetBYNAME is not a function. My trace showed JavaScript method names are case-sensitive (getSheetByName). The tool confirmed getSheetBYNAME had wrong casing and corrected it to getSheetByName.
