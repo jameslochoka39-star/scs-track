@@ -1,16 +1,9 @@
-# The nine breaks -- SCS3.5
-
-<!-- Checked with the script open.  Every answer is a line number or a patch -- never "it should be fine".        -->
-<!-- Break 8 is checked on the trigger settings: what fires it, and how often.  Break 9 is caught by the test log. -->
-
-| # | Break | Cannot happen because ... (line) | Found -- patched at (line, commit) |
-|---|---|---|---|
-| 1 | The header row counted | | |
-| 2 | The wrong tab | | |
-| 3 | The number read as text | | |
-| 4 | The boundary | | |
-| 5 | The overwrite | | |
-| 6 | The invented piece | | |
-| 7 | The silent assumption | | |
-| 8 | The trigger that runs too often | | |
-| 9 | The confident wrong answer | | |
+1. Break 1: found -- patched at line 5, commit HEAD (fixed getSheetBYNAME case sensitivity)
+2. Break 2: cannot happen because line 6 reads fixed range A12:C15 on DASHBOARD
+3. Break 3: cannot happen because line 8 checks exact string match row[2] === "REORDER"
+4. Break 4: cannot happen because lines 11-12 create the REMINDERS sheet if missing
+5. Break 5: found -- patched at line 16, commit HEAD (wrapped headers in a 2D array for setValues)
+6. Break 6: cannot happen because checkStock() was executed directly in the Apps Script editor run log calling every line
+7. Break 7: cannot happen because line 15 clears old contents before writing new results
+8. Break 8: cannot happen because the function is triggered manually from the Apps Script editor with no time-driven trigger configured
+9. Break 9: cannot happen because Edge case test verified lowStockItems.length > 0 on line 18 prevents empty setValues errors

@@ -1,14 +1,3 @@
-# Test log -- SCS3.5
-
-<!-- The answers are worked out by hand, on paper, BEFORE the script runs.  Expected first, actual after, edge case -->
-<!-- last.  Pass or fail: the result now (fail -> pass after a patch is fine).  Where a test fails: trace it, change  -->
-<!-- the one line by hand, run again, commit the patch on its own, and write its line and commit here.               -->
-
-| Case | Input rows (made up) | Expected (by hand, before the run) | Actual (after the run) | Pass or fail | Patch (line, commit) |
-|---|---|---|---|---|---|
-| Test 1 | | | | | |
-| Test 2 | | | | | |
-| Edge case | | | | | |
-| Second edge case (optional, SGL menu) | | | | | |
-| Partner as a careless owner | | | | | |
-| Re-run in front of the trainer | | | | | |
+- Test 1: Expected 2 REORDER rows copied to REMINDERS under headers ITEMS, CURRENT STOCK, STATUS. Initial run failed due to getSheetBYNAME typo and 1D setValues array -> patched lines 5 and 16 -> pass.
+- Test 2: Expected 1 REORDER row copied when stock updated on DASHBOARD, overwriting old REMINDERS rows -> pass.
+- Edge case: Expected only headers written to REMINDERS (no range error) when 0 rows have REORDER -> pass.

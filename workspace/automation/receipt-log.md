@@ -1,16 +1,23 @@
-# AI receipt log -- SCS3.5
+// AI-assisted, directed by lochoka
+Tool: Gemini
+Spec initialled on: 2026-11-19
+First prompt sent on: 2026-11-19
 
-Label: AI-assisted, directed by lochoka
-Tool:
-Spec initialled on (YYYY-MM-DD):
-First prompt sent on (YYYY-MM-DD HH:MM):
-
-## The one prompt, word for word
-<!-- The initialled spec, the column headings, the made-up rows, "Apps Script on Google Sheets", "a comment on -->
-<!-- every line".  Nothing from the client's real sheet: no customer, no phone number, no balance, no address. -->
-
-## What came back, and what I changed by hand
-
-## Iteration -- only if the draft missed a line of the spec (which line)
-
-## The debug move -- one real error: the message pasted whole, what my trace said first, what the tool said
+## Prompt
+function checkStock() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const dashboard = ss.getSheetBYNAME("DASHBOARD");
+  const StockData = dashboard.getRange("A12:C15").
+  getValues();
+  const lowStockItems =StockData.filter (row => row[2] === "REORDER");
+  let reminders = ss.getSheetByName("REMINDERS")
+  if(!reminders){
+    reminders = ss.insertSheet ("REMINDERS");
+  }
+  reminders.clearContents();
+  reminders.getRange("A1:C1").setValues ( ["ITEMS", "CURRENT STOCK" ,"STATUS"]);
+  if (lowStockItems.length > 0){
+    reminders.getRange(2,1, lowStockItems.length,3).
+    setValues(lowStockItems);
+  }
+}
