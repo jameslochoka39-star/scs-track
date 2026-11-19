@@ -1,3 +1,5 @@
+// AI-assisted, directed by lochoka
+
 function checkStock() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const dashboard = ss.getSheetByName("DASHBOARD");
