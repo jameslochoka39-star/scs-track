@@ -1,0 +1,8 @@
+# Method Note — SCS2b.3 Your First Instance
+
+1. **What I built:** Configured an Ubuntu 24.04 LTS micro instance environment with an imported `ed25519` SSH key pair, a least-privilege security group (`22` restricted to campus IP `129.222.147.183/32`, `80` and `443` open to `0.0.0.0/0`), and Nginx serving my static site on port 80.
+2. **Tags and cost hygiene:** Tagged the instance, EBS volume, security group, and key pair with `Owner=lochoka` and `Name=lochoka-*`, and stopped (rather than terminated) the instance at the end of the session so SCS2b.4 can reuse it without paying overnight compute charges.
+3. **Network verification ("listening is not reachable"):** Confirmed that Nginx listening locally on port 80 only becomes reachable externally when the security group allows inbound TCP 80, while port 443 returns connection refused because the security group allows it but no TLS service is listening yet.
+4. **SSH security:** Kept the private key (`id_ed25519`) strictly in `~/.ssh` with `600` permissions, never inside `~/scs`, and verified the host fingerprint on first connection.
+5. **Documentation discipline:** Recorded every stage in `cloud/instance-log.md` using the three-part structure (typed, expected, seen) and committed changes to Git.
+6. **What I might be wrong about, and how I would find out:** I might be wrong about my campus public IP remaining static across sessions (if NAT/ISP rotates it, SSH on port 22 will time out); I would find out by running `curl -s https://checkip.amazonaws.com` and testing `nc -vz <address> 22` from the terminal, then updating the security group rule if the CIDR changed.
