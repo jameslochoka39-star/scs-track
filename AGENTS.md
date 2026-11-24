@@ -14,3 +14,6 @@
 - Never use `Object.groupBy` or unverified `node:http` helpers like `fetchWithRetry`; stick to standard Node LTS features.
 - Never silently drop rows with blank stock quantities or split quoted CSV fields with a naive `.split(",")`.
 - Never modify files outside `workspace/stock-tools/` during scoped stock-tool tasks, and never include real client names, staff, or customer data in this public repo.
+
+## Skills
+- `skills/weekly-stock-audit/SKILL.md` — weekly Monday stock reorder verification procedure

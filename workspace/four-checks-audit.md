@@ -19,7 +19,7 @@ Evidence: `node reorder.js workspace/stock-tools/stock-export.csv` printed only 
 ### Wrong versions
 Looked for: JavaScript/Node APIs that conflict with `README.md` ("Works on any Node. No packages to install.").
 Found: `reorder.js` line 28 uses `Object.groupBy()`, which was introduced in Node 21 and fails with `TypeError: Object.groupBy is not a function` on Node 18/20 LTS.
-Evidence: `grep -n "groupBy" workspace/stock-tools/reorder.js` showed `28:  return Object.groupBy(list, (r) => r.Supplier);` while `README.md` line 6 states `Works on any Node.`
+Evidence: `node --version` printed `v22.22.1`, while `Object.groupBy` on `reorder.js` line 28 requires Node `v21.0.0+` (fails on Node `v18`/`v20` LTS despite `README.md` stating `Works on any Node.`).
 
 ### Invented libraries
 Looked for: Non-existent imports or hallucinated functions from Node built-in modules.
