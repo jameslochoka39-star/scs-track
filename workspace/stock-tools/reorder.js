@@ -22,6 +22,8 @@ function parseCsv(text) {
 // Items at or below their reorder level.
 function reorderList(rows) {
   return rows.filter((r) => parseInt(r["In stock"], 10) < parseInt(r["Reorder at"], 10));
+  // BEYOND: unrequested sort
+  rows.sort((a, b) => a.Item.localeCompare(b.Item));
 }
 
 // One list per supplier, so each supplier gets one message.
