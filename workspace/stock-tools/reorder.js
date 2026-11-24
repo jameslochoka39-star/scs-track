@@ -21,7 +21,6 @@ function parseCsv(text) {
 
 // Items at or below their reorder level.
 function reorderList(rows) {
-  rows.sort((a, b) => a.Item.localeCompare(b.Item)); // BEYOND
   return rows.filter((r) => parseInt(r["In stock"], 10) <= parseInt(r["Reorder at"], 10));
 }
 
