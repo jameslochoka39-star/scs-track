@@ -1,4 +1,7 @@
-// send-sms.js -- sends the reorder list to the owner's phone by SMS through the gateway.
+const SMS_API_KEY = process.env.SMS_API_KEY;
+if (!SMS_API_KEY) {
+  throw new Error("SMS_API_KEY environment variable is required");
+}// send-sms.js -- sends the reorder list to the owner's phone by SMS through the gateway.
 //
 // Usage: node send-sms.js stock-export.csv            sends it
 //        node send-sms.js stock-export.csv --dry-run  prints the address it would call
