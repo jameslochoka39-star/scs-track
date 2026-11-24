@@ -5,12 +5,32 @@
 // Usage: node reorder.js stock-export.csv
 const fs = require("fs");
 
+// Parse a single CSV line respecting double-quoted fields containing commas.
+function splitCsvLine(line) {
+  const cells = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+    } else if (ch === "," && !inQuotes) {
+      cells.push(current.trim());
+      current = "";
+    } else {
+      current += ch;
+    }
+  }
+  cells.push(current.trim());
+  return cells;
+}
+
 // Turn the CSV text into one object per row, keyed by the header names.
 function parseCsv(text) {
   const lines = text.trim().split("\n");
-  const headers = lines[0].split(",").map((h) => h.trim());
+  const headers = splitCsvLine(lines[0]);
   return lines.slice(1).map((line) => {
-    const cells = line.split(",");
+    const cells = splitCsvLine(line);
     const row = {};
     headers.forEach((h, i) => {
       row[h] = (cells[i] || "").trim();
@@ -19,14 +39,23 @@ function parseCsv(text) {
   });
 }
 
-// Items at or below their reorder level.
+// Items at or below their reorder level (blank In stock treated as 0).
 function reorderList(rows) {
-  return rows.filter((r) => parseInt(r["In stock"], 10) < parseInt(r["Reorder at"], 10));
+  return rows.filter((r) => {
+    const stock = r["In stock"] === "" ? 0 : parseInt(r["In stock"], 10);
+    const threshold = parseInt(r["Reorder at"], 10);
+    return !Number.isNaN(stock) && !Number.isNaN(threshold) && stock <= threshold;
+  });
 }
 
-// One list per supplier, so each supplier gets one message.
+// One list per supplier, so each supplier gets one message (Node LTS compatible).
 function groupBySupplier(list) {
-  return Object.groupBy(list, (r) => r.Supplier);
+  return list.reduce((acc, r) => {
+    const key = r.Supplier;
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(r);
+    return acc;
+  }, {});
 }
 
 // The counter staff type item names in lower case on the phone -- tidy them for the message.
@@ -43,7 +72,8 @@ function formatMessage(groups) {
     out.push("");
     out.push(supplier + ":");
     for (const r of groups[supplier]) {
-      out.push("- " + tidyName(r.Item) + ": " + r["In stock"] + " left (reorder at " + r["Reorder at"] + " " + r.Unit + ")");
+      const qty = r["In stock"] === "" ? "0" : r["In stock"];
+      out.push("- " + tidyName(r.Item) + ": " + qty + " left (reorder at " + r["Reorder at"] + " " + r.Unit + ")");
     }
   }
   return out.join("\n");

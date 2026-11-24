@@ -41,3 +41,11 @@ test("includes items equal to their reorder level", () => {
   const list = reorderList(parseCsv(csv));
   assert.deepStrictEqual(list.map((r) => r.Item), ["Grinding discs 115 mm"]);
 });
+
+test("handles quoted item names with commas and blank stock cells", () => {
+  const csv = 'Item,Supplier,In stock,Reorder at,Unit\n' +
+    '"Nails, 3 inch",Hardware wholesaler,4,10,kg\n' +
+    'Cement 50 kg,Building wholesaler,,20,bags\n';
+  const list = reorderList(parseCsv(csv));
+  assert.deepStrictEqual(list.map((r) => r.Item), ["Nails, 3 inch", "Cement 50 kg"]);
+});
