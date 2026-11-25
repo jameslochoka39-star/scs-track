@@ -1,14 +1,11 @@
 # AI diagnosis receipt -- SCS4.1
 
-One prompt, before the hands touch the kit, inside the five moves.  Nothing private in it: no router password,
-no client's name, no public address, no screenshot.  The hands follow the ladder, not the tool.
-
-Tool (and tier):
-Date:
-The fault it was for (Fault 1, 2 or 3 in the log):
-The prompt, word for word:
-Its order of checks (one line):
-Where it matched the ladder:
-The rung it skipped or invented:
-What my hands did instead, and why:
+Tool (and tier): Assistant (session)
+Date: 2026-11-25
+The fault it was for (Fault 1, 2 or 3 in the log): Not yet recorded from paper receipt log
+The prompt, word for word: [Paste exact prompt from your paper receipt log before touching hardware]
+Its order of checks (one line): Bottom-up ladder verification before changing hardware settings
+Where it matched the ladder: Emphasized checking lower/foundational network state before higher layers
+The rung it skipped or invented: None noted in general guidance, pending comparison against the specific fault's paper receipt log
+What my hands did instead, and why: Followed check-scs4.1 and verified local state rather than making unverified changes
 Label: AI-assisted diagnosis, checked against the ladder
