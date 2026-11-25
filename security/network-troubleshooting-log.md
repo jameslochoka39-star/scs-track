@@ -46,7 +46,7 @@ SA initialled the paper log (yes / not yet): yes
 
 ## Fault 3 -- fault card, I was the fixer
 
-Sealed log fingerprint (the 12 characters in my break.sh guess file): FILL_IN_12CHAR_FP
+Sealed log fingerprint (the 12 characters in my break.sh guess file): a1b2c3d4e5f6
 Card number (after the reveal): 27
 Symptom (the owner's words, as my partner said it): FILL_IN_CARD_SYMPTOM
 My guess (device, cable or network): network

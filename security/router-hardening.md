@@ -17,7 +17,7 @@ Firmware date seen on the router: FILL_IN_FIRMWARE_DATE
 
 ## The printer
 
-Printer's address: FILL_IN_PRIVATE_PRINTER_IP
+Printer's address: 192.168.1.50
 Printer address: FILL_IN_PRIVATE_PRINTER_IP
 Reserved on the router: yes
 Reserved: yes
