@@ -3,10 +3,10 @@
 Date: 2026-11-25
 Station:
 
-The fair copy of the paper log.  The kit station is the SA team's isolated lab network, never the campus.
+The fair copy of the paper log. The kit station is the SA team's isolated lab network, never the campus.
 Nothing private here: no passwords, no public addresses, no client's name.
-The rules: the guess before the first swap.  Every step as it happens, including the ones that changed nothing
-("nothing" in the What changed column is an answer, not a blank).  Put it back.  The SA initials the paper log
+The rules: the guess before the first swap. Every step as it happens, including the ones that changed nothing
+("nothing" in the What changed column is an answer, not a blank). Put it back. The SA initials the paper log
 only after the put-back is checked.
 
 ## Fault 1 -- station fault
@@ -16,13 +16,13 @@ My guess (device, cable or network):
 The rung I expected to fail:
 
 | Step | What I did (one swap or one look) | What changed | Rung |
-|---|---|---|---|
-| 1 |  | nothing |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
-| 6 |  |  |  |
+| ---- | --------------------------------- | ------------ | ---- |
+| 1    |                                   | nothing      |      |
+| 2    |                                   |              |      |
+| 3    |                                   |              |      |
+| 4    |                                   |              |      |
+| 5    |                                   |              |      |
+| 6    |                                   |              |      |
 
 The rung that failed:
 The fault was:
@@ -37,13 +37,13 @@ My guess (device, cable or network):
 The rung I expected to fail:
 
 | Step | What I did (one swap or one look) | What changed | Rung |
-|---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
-| 6 |  |  |  |
+| ---- | --------------------------------- | ------------ | ---- |
+| 1    |                                   |              |      |
+| 2    |                                   |              |      |
+| 3    |                                   |              |      |
+| 4    |                                   |              |      |
+| 5    |                                   |              |      |
+| 6    |                                   |              |      |
 
 The rung that failed:
 The fault was:
@@ -61,13 +61,13 @@ The rung I expected to fail:
 My break.sh guess in one line (written before the reveal):
 
 | Step | What I did (one swap or one look) | What changed | Rung |
-|---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
-| 6 |  |  |  |
+| ---- | --------------------------------- | ------------ | ---- |
+| 1    |                                   |              |      |
+| 2    |                                   |              |      |
+| 3    |                                   |              |      |
+| 4    |                                   |              |      |
+| 5    |                                   |              |      |
+| 6    |                                   |              |      |
 
 The rung that failed:
 The fault was:
